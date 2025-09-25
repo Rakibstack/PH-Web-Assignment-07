@@ -3,8 +3,8 @@ import React from 'react';
 const Navber = () => {
     return (
         <div className='container mx-auto px-4 '>
-           <div className='flex justify-between items-center p-4'>
-            <h1 className='text-[#130B2D] font-bold text-[1.7rem]'>CS — Ticket System</h1>
+           <div className='flex justify-between items-center p-3'>
+            <h1 className='text-[#130B2D]  font-bold text-[1.7rem]'>CS — Ticket System</h1>
             <div className='flex items-center list-none gap-4.5 text-[#000000] '>
                 <li><a href="#"></a>Home</li>
                 <li><a href="#"></a>FAQ</li>
