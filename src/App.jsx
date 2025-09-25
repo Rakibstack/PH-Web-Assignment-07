@@ -1,12 +1,15 @@
 
 import './App.css'
+import Bannersection from './Component/Banner-section/Bannersection'
+import Navber from './Component/Navbersection/Navber'
 
 function App() {
 
   return (
     <>
-     
-      <h1>Vite + React</h1>     
+    <Navber></Navber>
+    <Bannersection></Bannersection>
+   
     </>
   )
 }
