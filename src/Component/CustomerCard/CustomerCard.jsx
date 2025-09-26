@@ -6,9 +6,9 @@ const CustomerCard = ({Customerinfo}) => {
        <div className='container mx-auto px-4 py-6'>
 
        
-        <div className='grid grid-cols-3 '>
+        <div className='grid grid-cols-3 '> 
          <h2 className='col-span-2 py-4 text-2xl font-semibold text-[#34485A]'>Customer Tickets</h2>
-           <h2 className='col-span-1 py-4 ml-5 text-2xl font-semibold text-[#34485A]'>Task Status</h2> 
+           <h2 className='col-span-1 hidden lg:block py-4 ml-5 text-2xl font-semibold text-[#34485A]'>Task Status</h2> 
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
             
@@ -38,7 +38,9 @@ const CustomerCard = ({Customerinfo}) => {
             </div>
               
                 <div  className='col-span-1 p-2'>  
+                   <h2 className='col-span-1 block lg:hidden py-4 ml-5 text-2xl font-semibold text-[#34485A]'>Task Status</h2>
                     <div className='bg-white w-full p-5 rounded-md'>
+                     
                         <h2 className='text-[#001931] font-semibold pb-3 text-[1.3rem]'>Payment Failed - Card Declined</h2>
                         <div className='text-center text-white bg-[#02A53B] w-full p-2 rounded-md'>
                             <button className='font-semibold'>Complete</button>
