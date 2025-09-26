@@ -1,6 +1,7 @@
 
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import './App.css'
+ import { ToastContainer } from 'react-toastify';
 import Bannersection from './Component/Banner-section/Bannersection'
 import Cardpromise from './Component/Cardpromise/Cardpromise'
 import Navber from './Component/Navbersection/Navber'
@@ -10,17 +11,25 @@ import Navber from './Component/Navbersection/Navber'
   return res.json()
  }
  
-function App() {
   const CustomerData = fetchpromise();
+function App() {
+ 
+   const [taskstatus,settaskstatus] = useState([]);
+   const [tasks,settasks] = useState([]);
+   const [resolved,setresolved] =useState([]);
+  
+   
+   
 
   return (
     <>
     <Navber></Navber>
-    <Bannersection></Bannersection>
+    <Bannersection taskstatus={taskstatus} resolved={resolved} ></Bannersection>
     <Suspense fallback={<div className='text-center'><span className="loading loading-spinner loading-xl"></span></div>}>
-      <Cardpromise CustomerData={CustomerData} ></Cardpromise>
+      <Cardpromise resolved={resolved} setresolved={setresolved} tasks={tasks} settasks={settasks} taskstatus={taskstatus} settaskstatus={settaskstatus} CustomerData={CustomerData} ></Cardpromise>
     </Suspense>
-   
+
+   <ToastContainer />
     </>
   )
 }

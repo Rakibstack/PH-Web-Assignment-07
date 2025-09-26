@@ -1,9 +1,27 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
-const CustomerCard = ({Customerinfo}) => {
-    
+const CustomerCard = ({Customerinfo,settaskstatus,taskstatus,settasks,tasks,resolved,setresolved}) => {
+     
+      const HandleTask = (Customerdata) => {
+        toast.success("In Progress!")
+        settaskstatus([...taskstatus,Customerdata])
+       
+      }
+      const HandleComplete = (task) => {
+            
+         toast.success(`${task.title} moved to Resolved!`)
+  
+        settaskstatus(taskstatus.filter(t => t.id !== task.id))
+        
+        
+        setresolved([...resolved,task])
+        
+
+      }
+
     return (
-       <div className='container mx-auto px-4 py-6'>
+       <div className='container mx-auto  px-4 py-6'>
 
        
         <div className='grid grid-cols-3 '> 
@@ -14,10 +32,10 @@ const CustomerCard = ({Customerinfo}) => {
             
             <div className=' col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4'>   
                {
-                Customerinfo.map(Customer =>     <div className='w-full  bg-white p-3 rounded-xl'>
+                Customerinfo.map(Customer  =>     <div  onClick={() => {HandleTask(Customer)}} key={Customer.id} className='w-full  bg-white p-3 rounded-xl'>
               <div className='flex justify-between py-3 '>
                 <h2 className='text-[#001931] font-medium text-[1.1rem]'>{Customer.title}</h2>
-                <button className={`flex items-center justify-between gap-1 px-4 py-1 rounded-3xl ${Customer.status === 'In Progress'? 'bg-[#FEBB0C60]' : 'bg-[#B9F8CF]' }`}><div className={`w-3 h-3 rounded-3xl ${Customer.status === 'In Progress'? 'bg-[#FEBB0C]' : 'bg-[#02A53B]'}`}></div> {Customer.status}</button>
+                <button className={`flex items-center justify-between gap-1 px-5 py-1 rounded-3xl ${Customer.status === 'In Progress'? 'bg-[#FEBB0C60]' : 'bg-[#B9F8CF]' }`}><div className={`w-3 h-3 rounded-3xl ${Customer.status === 'In Progress'? 'bg-[#FEBB0C]' : 'bg-[#02A53B]'}`}></div> {Customer.status}</button>
               </div>
               <p className='text-[#627382] pb-3'>{Customer.description}</p>
               <div className='flex justify-between'>
@@ -34,22 +52,38 @@ const CustomerCard = ({Customerinfo}) => {
              </div>
              )
                }
-
             </div>
               
                 <div  className='col-span-1 p-2'>  
-                   <h2 className='col-span-1 block lg:hidden py-4 ml-5 text-2xl font-semibold text-[#34485A]'>Task Status</h2>
-                    <div className='bg-white w-full p-5 rounded-md'>
-                     
-                        <h2 className='text-[#001931] font-semibold pb-3 text-[1.3rem]'>Payment Failed - Card Declined</h2>
-                        <div className='text-center text-white bg-[#02A53B] w-full p-2 rounded-md'>
-                            <button className='font-semibold'>Complete</button>
+                    <h2 className='col-span-1 block lg:hidden py-4 ml-5 text-2xl font-semibold text-[#34485A]'>Task Status</h2>
+
+                    {
+                      taskstatus.length > 0 ? ( <div>
+                     {
+                    taskstatus.map(task =>  <div key={task.id}>  
+                    <div className='bg-white w-full mb-4 p-5 rounded-md'>
+
+                      <h2 className='text-[#001931] font-semibold pb-3 text-[1.2rem]'>{task.title}</h2>
+                      <div className='text-center text-white bg-[#02A53B] w-full p-2 rounded-md'>
+                          <button onClick={() => {HandleComplete(task)}} className='font-semibold'>Complete</button>
                         </div>
                     </div> 
-                  <p>Select a ticket to add to Task Status</p>
-
-                   <div className='py-8'>
+                  </div> )
+                  }
+                    </div>) : ( <p >Select a ticket to add to Task Status</p>)
+                    }
+  
+                 
+                 <div className='py-6'>
                     <h2 className='font-semibold text-[1.5rem]'>Resolved Task</h2>
+                    {
+                      resolved.length > 0 ? resolved.map(task =>  <div className='bg-[#E0E7FF] w-full p-5 mb-4 rounded-xl'>
+                      <h2 className='text-[#001931] font-semibold '>{task.title}</h2>
+                    </div> ) : <h2>No resolved tasks yet.</h2>
+                    }
+                   
+
+                      
                 </div>
                 </div>
 

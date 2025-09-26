@@ -2,7 +2,7 @@ import React, { use } from 'react';
 import CustomerCard from '../CustomerCard/CustomerCard';
 
 
-const Cardpromise = ({CustomerData}) => {
+const Cardpromise = ({CustomerData,settaskstatus,taskstatus,settasks,tasks,setresolved,resolved}) => {
 
     const Customerinfo = use (CustomerData);
     
@@ -10,7 +10,7 @@ const Cardpromise = ({CustomerData}) => {
     return (        
         <div className='bg-gray-200 '>
          
-        <CustomerCard Customerinfo={Customerinfo}></CustomerCard>
+        <CustomerCard setresolved={setresolved} resolved={resolved} tasks={tasks} settasks={settasks} taskstatus={taskstatus} settaskstatus={settaskstatus} Customerinfo={Customerinfo}></CustomerCard>
                     
         </div>
     );
