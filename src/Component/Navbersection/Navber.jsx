@@ -3,7 +3,7 @@ import React from 'react';
 const Navber = () => {
     return (
        
-        <div className=''>
+      
              <div className='container mx-auto px-4 '>
            <div className='md:flex-row flex-col flex justify-between items-center p-3'>
             <h1 className='text-[#130B2D]  font-bold text-[1.7rem]'>CS — Ticket System</h1>
@@ -21,7 +21,7 @@ const Navber = () => {
             </div> */}
            </div>
         </div>
-        </div>
+    
     );
 };
 

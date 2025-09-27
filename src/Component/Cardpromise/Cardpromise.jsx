@@ -1,16 +1,19 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import CustomerCard from '../CustomerCard/CustomerCard';
 
 
-const Cardpromise = ({CustomerData,settaskstatus,taskstatus,settasks,tasks,setresolved,resolved}) => {
+const Cardpromise = ({CustomerData,settaskstatus,taskstatus,setresolved,resolved,setcustomerinfo,customerinfo}) => {
 
-    const Customerinfo = use (CustomerData);
+    const Customerinfodata = use (CustomerData);
+    useEffect(() => {
+         setcustomerinfo(Customerinfodata) 
+    },[])
     
     
     return (        
         <div className='bg-gray-200 '>
          
-        <CustomerCard setresolved={setresolved} resolved={resolved} tasks={tasks} settasks={settasks} taskstatus={taskstatus} settaskstatus={settaskstatus} Customerinfo={Customerinfo}></CustomerCard>
+        <CustomerCard customerinfo={customerinfo} setcustomerinfo={setcustomerinfo} setresolved={setresolved} resolved={resolved}  taskstatus={taskstatus} settaskstatus={settaskstatus} ></CustomerCard>
                     
         </div>
     );
