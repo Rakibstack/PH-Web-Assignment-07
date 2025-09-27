@@ -34,9 +34,9 @@ const CustomerCard = ({
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
             
-            <div className=' col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4'>   
+            <div className=' col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 '>   
                {
-                customerinfo.map(Customer  =>     <div  onClick={() => {HandleTask(Customer)}} key={Customer.id} className='w-full  bg-white p-3 rounded-xl'>
+                customerinfo.map(Customer  =>     <div  onClick={() => {HandleTask(Customer)}} key={Customer.id} className='w-full shadow-md transition duration-400 ease-in-out  transform hover:scale-106 hover:shadow-xl cursor-pointer  bg-white p-3 rounded-xl'>
               <div className='flex justify-between py-3 '>
                 <h2 className='text-[#001931] font-medium text-[1.1rem]'>{Customer.title}</h2>
                 <button className={`flex items-center justify-between gap-1 px-5 py-1 rounded-3xl ${Customer.status === 'In Progress'? 'bg-[#FEBB0C60]' : 'bg-[#B9F8CF]' }`}><div className={`w-3 h-3 rounded-3xl ${Customer.status === 'In Progress'? 'bg-[#FEBB0C]' : 'bg-[#02A53B]'}`}></div> {Customer.status}</button>
